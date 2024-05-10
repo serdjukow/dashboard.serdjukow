@@ -1,12 +1,16 @@
-import './App.css';
+import { Suspense } from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import { useRoutes } from './routes'
+import Loader from './Layouts/Loader/Loader'
+import './App.css'
 
 const App = () => {
+  const routes = useRoutes()
   return (
-    <div className="content">
-      <h1>Rsbuild with React</h1>
-      <p>Start building amazing things with Rsbuild.</p>
-    </div>
-  );
-};
+    <BrowserRouter>
+      <Suspense fallback={<Loader />}>{routes}</Suspense>
+    </BrowserRouter>
+  )
+}
 
 export default App;
